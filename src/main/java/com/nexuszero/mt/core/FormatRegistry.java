@@ -1,0 +1,7 @@
+package com.nexuszero.mt.core;
+import java.util.*;
+public final class FormatRegistry {
+ private FormatRegistry(){}
+ public static final String[] EXT={"apk","apks","xapk","aab","dex","odex","vdex","oat","art","smali","arsc","xml","so","java","kt","kts","groovy","gradle","c","h","cpp","hpp","cc","cs","go","rs","swift","dart","py","pyc","js","mjs","cjs","jsx","ts","tsx","php","rb","lua","sh","bash","html","htm","css","scss","sass","less","json","json5","yaml","yml","toml","ini","conf","properties","env","sql","graphql","proto","elf","o","a","bin","dat","pak","blob","wasm","zip","7z","rar","tar","gz","xz","bz2","jar","aar","war","pem","der","cer","crt","key","p12","pfx","jks","keystore","sqlite","sqlite3","db","har","pcap","pcapng","txt","log","md","csv"};
+ public static String detect(String name,String s){String n=name==null?"":name.toLowerCase(Locale.ROOT);for(String e:EXT)if(n.endsWith("."+e))return e.toUpperCase(Locale.ROOT);String x=s==null?"":s;if(x.startsWith("PK"))return"ZIP-CONTAINER?";if(x.startsWith("dex\n"))return"DEX";if(x.startsWith("\u007fELF"))return"ELF";String l=x.toLowerCase(Locale.ROOT);if(l.contains(".class ")&&l.contains(".method "))return"SMALI";if(l.contains("androidmanifest"))return"ANDROID?";if(l.trim().startsWith("{")||l.trim().startsWith("["))return"JSON?";return"UNKNOWN→RAW/STRINGS/FINGERPRINT";}
+}

@@ -1,0 +1,11 @@
+Target existing plugins/nexus-analyzer build.gradle:
+versionCode = 10
+versionName = "5.1.0-alpha2"
+Keep existing alpha4 interfaces and add:
+com.nexuszero.mt.NexusDeepAnalyzeMenu
+com.nexuszero.mt.NexusHexMenu
+com.nexuszero.mt.NexusStringsMenu
+com.nexuszero.mt.NexusProtocolLabMenu
+com.nexuszero.mt.NexusEncodingLabMenu
+com.nexuszero.mt.NexusFingerprintMenu
+Build: ./gradlew :plugins:nexus-analyzer:assembleRelease --no-daemon
